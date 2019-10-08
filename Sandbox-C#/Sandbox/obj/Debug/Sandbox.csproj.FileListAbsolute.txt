@@ -19,3 +19,9 @@ C:\Users\mhein\Desktop\Sandbox-C#\Sandbox\obj\Debug\Sandbox.csprojAssemblyRefere
 C:\Users\mhein\Desktop\Sandbox-C#\Sandbox\obj\Debug\Sandbox.csproj.CoreCompileInputs.cache
 C:\Users\mhein\Desktop\Sandbox-C#\Sandbox\obj\Debug\Sandbox.exe
 C:\Users\mhein\Desktop\Sandbox-C#\Sandbox\obj\Debug\Sandbox.pdb
+C:\Users\trevo\Dropbox\dcc\21 - custom list\CustomList\Sandbox-C#\Sandbox\bin\Debug\Sandbox.exe.config
+C:\Users\trevo\Dropbox\dcc\21 - custom list\CustomList\Sandbox-C#\Sandbox\bin\Debug\Sandbox.exe
+C:\Users\trevo\Dropbox\dcc\21 - custom list\CustomList\Sandbox-C#\Sandbox\bin\Debug\Sandbox.pdb
+C:\Users\trevo\Dropbox\dcc\21 - custom list\CustomList\Sandbox-C#\Sandbox\obj\Debug\Sandbox.csprojAssemblyReference.cache
+C:\Users\trevo\Dropbox\dcc\21 - custom list\CustomList\Sandbox-C#\Sandbox\obj\Debug\Sandbox.exe
+C:\Users\trevo\Dropbox\dcc\21 - custom list\CustomList\Sandbox-C#\Sandbox\obj\Debug\Sandbox.pdb

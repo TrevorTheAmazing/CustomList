@@ -11,7 +11,8 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-                       
+            CustomList<string> tempCustomList = new CustomList<string>();
+            Console.WriteLine("test");
         }
     }
 }
