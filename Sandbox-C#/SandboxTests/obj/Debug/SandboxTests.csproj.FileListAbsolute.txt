@@ -1,0 +1,17 @@
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\SandboxTests.dll
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\SandboxTests.pdb
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Sandbox.exe
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Sandbox.pdb
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Sandbox.exe.config
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\obj\Debug\SandboxTests.csprojAssemblyReference.cache
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\obj\Debug\SandboxTests.csproj.CoreCompileInputs.cache
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\obj\Debug\SandboxTests.csproj.CopyComplete
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\obj\Debug\SandboxTests.dll
+C:\Users\mhein\source\repos\Sandbox\SandboxTests\obj\Debug\SandboxTests.pdb
