@@ -25,50 +25,50 @@ namespace CustomListTests
             Assert.IsTrue(tempCount < testCustomList.Count);
         }
 
-        [TestMethod]
-        public void Add_Method_Increase_Capacity_Test()
-        {
-            //arrange
-            CustomList<int> testCustomList = new CustomList<int>();
-            int preTestCapacity = testCustomList.Capacity;
+        //[TestMethod]
+        //public void Add_Method_Increase_Capacity_Test()
+        //{
+        //    //arrange
+        //    CustomList<int> testCustomList = new CustomList<int>();
+        //    int preTestCapacity = testCustomList.Capacity;
 
-            //act
-            testCustomList.Add(7);
+        //    //act
+        //    testCustomList.Add(7);
 
-            int postTestCapacity = testCustomList.Capacity;
+        //    int postTestCapacity = testCustomList.Capacity;
 
-            //assert
-            Assert.IsTrue(postTestCapacity > preTestCapacity);
+        //    //assert
+        //    Assert.IsTrue(postTestCapacity > preTestCapacity);
 
-        }
+        //}
 
-        [TestMethod]
-        public void Add_AddToEmptyList_ItemGoesToIndexZero()
-        {
-            //arrange
-            CustomList<int> testCustomList = new CustomList<int>();
-            int expected = 12;
-            int actual;
+        //[TestMethod]
+        //public void Add_AddToEmptyList_ItemGoesToIndexZero()
+        //{
+        //    //arrange
+        //    CustomList<int> testCustomList = new CustomList<int>();
+        //    int expected = 12;
+        //    int actual;
 
-            //act
-            testCustomList.Add(12);
-            actual = testCustomList[0];
+        //    //act
+        //    testCustomList.Add(12);
+        //    actual = testCustomList[0];
 
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
+        //    //assert
+        //    Assert.AreEqual(expected, actual);
+        //}
 
         [TestMethod]
         public void Add_AddItemToList_CountIncrements()
         {
             // arrange
-            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testCustomList = new CustomList<int>();
             int expected = 1;
             int actual;
 
             // act
-            testList.Add(234);
-            actual = testList.Count;
+            testCustomList.Add(234);
+            actual = testCustomList.Count;
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -84,7 +84,7 @@ namespace CustomListTests
             int actual;
 
             //act
-            for (int i = 0; i<10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 testCustomList.Add(i);
             }
@@ -105,7 +105,7 @@ namespace CustomListTests
             int actual;
 
             //act
-            for (int i=0; i<10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 testCustomList.Add(i);
             }
@@ -117,6 +117,6 @@ namespace CustomListTests
 
 
         }
-        
+
     }
 }

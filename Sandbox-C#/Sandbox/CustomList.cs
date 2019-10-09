@@ -31,16 +31,26 @@ namespace Sandbox
 
         public CustomList()
         {
-            capacity = 1;
+            capacity = 0;
             items = new T[capacity];
         }
 
         public CustomList(int length)
         {
-            items = new T[capacity];
-            CustomList<int> testCustomList = new CustomList<int>();
+            //if (length==0)
+            //{
+
+            //}
+            //else
+            //{
+
+            //}
+            //items = new T[length];
+            //CustomList<int> testCustomList = new CustomList<int>();
         }
-        
+
+
+
 
         private void IncreaseCapacity()
         {
@@ -60,17 +70,22 @@ namespace Sandbox
         {
             //assign tempCap to array.capacity
             //reassign items to a new array(tempCap+1)
+            tempItems = new T[items.Length+1];
+            for (int i = 0; i<items.Length; i++)
+            {
+                tempItems[i] = items[i];
+            }
             bool success = false;
 
             try
             {
                 if (index == 0)
                 {
-                    items.Prepend(itemToAdd);
+                    tempItems.Prepend<T>(itemToAdd);
                 }
                 else
                 {
-                    items.Append(itemToAdd);
+                    tempItems.Append<T>(itemToAdd);
                 }
                 success = true;
             }
@@ -87,14 +102,19 @@ namespace Sandbox
                 }
                 else
                 {
-                    UpdateList();
+                    //UpdateList();
+                    items = tempItems;
                 }
             }
         }
 
         private void UpdateList()
         {
-            int newListLength = items.Length;
+            //int newListLength = items.Length;
+            //for (int i = 0; i<items.Length; i++)
+            //{
+            //    if ()
+            //}
 
         }
 
