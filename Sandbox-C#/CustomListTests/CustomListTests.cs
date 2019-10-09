@@ -5,7 +5,7 @@ using Sandbox;
 namespace CustomListTests
 {
     [TestClass]
-    public class CustomListTests
+    public class CustomListTestsInteger
     {
         // unit test for adding multiple items to check position of last item
         // unit test for adding multiple items to check Count property
@@ -118,5 +118,91 @@ namespace CustomListTests
 
         }
 
+        [TestMethod]
+        public void Delete_Test()
+        {
+            CustomList<int> testCustomList = new CustomList<int>();
+
+            for (int i = 0; i < 6; i++)
+            {
+                testCustomList.Add(i);
+            }
+
+            int preTestCount = testCustomList.Count;
+
+            testCustomList.Delete(3);
+
+            int postTestCount = testCustomList.Count;
+
+            Assert.IsTrue(preTestCount > postTestCount);
+        }
+    }
+
+    [TestClass]
+    public class CustomListTestsString
+    {
+        [TestMethod]
+        public void String_Add_Method_Test()
+        {
+            //arrange
+            CustomList<string> testCustomList = new CustomList<string>();
+            int tempCount = testCustomList.Count;
+            string tempString = "zero";
+
+            //act
+            testCustomList.Add(tempString);
+
+            //assert
+            Assert.IsTrue(tempString == testCustomList[0]);
+        }
+        [TestMethod]
+        public void String_AddMultiple_Method_Test()
+        {
+            //arrange
+            CustomList<string> testCustomList = new CustomList<string>();
+            int tempCount = testCustomList.Count;
+            string tempString1 = "one";
+            string tempString2 = "two";
+
+            //act
+            testCustomList.Add(tempString1);
+            testCustomList.Add(tempString2);
+
+            //assert
+            Assert.IsTrue(tempString2 == testCustomList[1]);
+        }
+    }
+
+    [TestClass]
+    public class CustomListTestsZipper
+    {
+        [TestMethod]
+        public void Zipper_Test()
+        {
+            CustomList<int> testCustomListOdd = new CustomList<int>();
+            CustomList<int> testCustomListEven = new CustomList<int>();
+            CustomList<int> testCustomListZippered = new CustomList<int>();
+
+            testCustomListOdd.Add(1);
+            testCustomListOdd.Add(3);
+            testCustomListOdd.Add(5);
+
+            testCustomListEven.Add(2);
+            testCustomListEven.Add(4);
+            testCustomListEven.Add(6);
+
+
+
+            for (int i = 0; i<testCustomListOdd.Count; i++)
+            {
+                testCustomListZippered.Add(testCustomListOdd[i]);
+                testCustomListZippered.Add(testCustomListEven[i]);
+            }
+
+            Assert.AreEqual(testCustomListOdd[0], testCustomListZippered[0]);
+            Assert.AreEqual(testCustomListEven[2], testCustomListZippered[5]);
+
+        }
     }
 }
+

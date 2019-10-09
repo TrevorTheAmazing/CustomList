@@ -9,7 +9,6 @@ namespace Sandbox
     public class CustomList<T>
     {
         //memb var
-        //array of items
         private T[] items;
         private T[] tempItems;
         public T this[int i]
@@ -26,29 +25,16 @@ namespace Sandbox
         public int Count
         {
             get => GetItemCount();
-        }
+        }       
 
+        //constructor
         public CustomList()
         {
             capacity = 0;
-            //capacity = 1;
             items = new T[capacity];
         }
 
-        public CustomList(int length)
-        {
-            //if (length==0)
-            //{
-
-            //}
-            //else
-            //{
-
-            //}
-            //items = new T[length];
-            //CustomList<int> testCustomList = new CustomList<int>();
-        }
-
+        //memb meth
         private void IncreaseCapacity()
         {
             if (capacity == 0)
@@ -59,8 +45,7 @@ namespace Sandbox
             {
                 tempItems = new T[capacity * 2];
             }
-            
-            
+                        
             for (int i = 0; i<items.Length; i++)
             {
                 tempItems[i] = items[i];
@@ -71,11 +56,10 @@ namespace Sandbox
 
         }
 
-
         public void Add(T itemToAdd, int index)
         {
-            //if ((count+1) == capacity)
-            //if ((index + 1) == capacity)
+            bool success = false;
+
             if ((index + 1) >= capacity)
             {
                 IncreaseCapacity();
@@ -87,10 +71,6 @@ namespace Sandbox
             {
                 tempItems[i] = items[i];
             }
-
-            //tempItems = new T[items.Length + 1];
-
-            bool success = false;
 
             try
             {
@@ -126,7 +106,6 @@ namespace Sandbox
             }
         }
 
-
         public void Add(T itemToAdd)
         {
             //If an index is not specified, add it to the end of the array.
@@ -144,5 +123,43 @@ namespace Sandbox
             return count;
         }
 
+        //public void Delete(T itemToDelete)
+        public void Delete(T value)
+        {//imitate Remove()
+            int tempIndex = -1;
+            tempItems = items;
+
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (value.Equals(tempItems[i]))
+                {
+                    tempIndex = i;
+                    break;
+                }
+            }
+
+            //if a matching value was found...
+            if (tempIndex>=0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    if (i == tempIndex)
+                    {
+                        //count--;
+                        //continue;
+                        for (int j = tempIndex; j < count; j++)
+                        {
+                            items[j] = tempItems[j + 1];
+                        }
+                        
+                    }
+                    else
+                    {
+                        items[i] = tempItems[i];
+                    }
+                }
+                count--;
+            }
+        }
     }
 }
