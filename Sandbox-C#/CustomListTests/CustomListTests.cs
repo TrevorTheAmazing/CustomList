@@ -25,38 +25,38 @@ namespace CustomListTests
             Assert.IsTrue(tempCount < testCustomList.Count);
         }
 
-        //[TestMethod]
-        //public void Add_Method_Increase_Capacity_Test()
-        //{
-        //    //arrange
-        //    CustomList<int> testCustomList = new CustomList<int>();
-        //    int preTestCapacity = testCustomList.Capacity;
+        [TestMethod]
+        public void Add_Method_Increase_Capacity_Test()
+        {
+            //arrange
+            CustomList<int> testCustomList = new CustomList<int>();
+            int preTestCapacity = testCustomList.Capacity;
 
-        //    //act
-        //    testCustomList.Add(7);
+            //act
+            testCustomList.Add(7);
 
-        //    int postTestCapacity = testCustomList.Capacity;
+            int postTestCapacity = testCustomList.Capacity;
 
-        //    //assert
-        //    Assert.IsTrue(postTestCapacity > preTestCapacity);
+            //assert
+            Assert.IsTrue(postTestCapacity > preTestCapacity);
 
-        //}
+        }
 
-        //[TestMethod]
-        //public void Add_AddToEmptyList_ItemGoesToIndexZero()
-        //{
-        //    //arrange
-        //    CustomList<int> testCustomList = new CustomList<int>();
-        //    int expected = 12;
-        //    int actual;
+        [TestMethod]
+        public void Add_AddToEmptyList_ItemGoesToIndexZero()
+        {
+            //arrange
+            CustomList<int> testCustomList = new CustomList<int>();
+            int expected = 12;
+            int actual;
 
-        //    //act
-        //    testCustomList.Add(12);
-        //    actual = testCustomList[0];
+            //act
+            testCustomList.Add(12);
+            actual = testCustomList[0];
 
-        //    //assert
-        //    Assert.AreEqual(expected, actual);
-        //}
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
 
         [TestMethod]
         public void Add_AddItemToList_CountIncrements()

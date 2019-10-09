@@ -12,6 +12,11 @@ namespace Sandbox
         //array of items
         private T[] items;
         private T[] tempItems;
+        public T this[int i]
+        {
+            get { return items[i]; }
+            set { items[i] = value; }
+        }
         private int capacity;
         public int Capacity
         {
@@ -22,16 +27,11 @@ namespace Sandbox
         {
             get => GetItemCount();
         }
-        public T this[int i]
-        {
-            get { return items[i]; }
-            set { items[i] = value; }
-        }
-
 
         public CustomList()
         {
             capacity = 0;
+            //capacity = 1;
             items = new T[capacity];
         }
 
@@ -49,12 +49,17 @@ namespace Sandbox
             //CustomList<int> testCustomList = new CustomList<int>();
         }
 
-
-
-
         private void IncreaseCapacity()
         {
-            tempItems = new T[capacity*2];
+            if (capacity == 0)
+            {
+                tempItems = new T[1];
+            }
+            else
+            {
+                tempItems = new T[capacity * 2];
+            }
+            
             
             for (int i = 0; i<items.Length; i++)
             {
@@ -62,19 +67,29 @@ namespace Sandbox
             }
 
             items = tempItems;
+            capacity = items.Length;
 
         }
 
 
         public void Add(T itemToAdd, int index)
         {
-            //assign tempCap to array.capacity
-            //reassign items to a new array(tempCap+1)
-            tempItems = new T[items.Length+1];
+            //if ((count+1) == capacity)
+            //if ((index + 1) == capacity)
+            if ((index + 1) >= capacity)
+            {
+                IncreaseCapacity();
+            }
+
+            tempItems = new T[capacity];
+
             for (int i = 0; i<items.Length; i++)
             {
                 tempItems[i] = items[i];
             }
+
+            //tempItems = new T[items.Length + 1];
+
             bool success = false;
 
             try
@@ -88,9 +103,10 @@ namespace Sandbox
                     tempItems.Append<T>(itemToAdd);
                 }
                 tempItems[index] = itemToAdd;
+                this[index] = tempItems[index];
                 success = true;
             }
-            catch (ArgumentOutOfRangeException)
+            catch (/*ArgumentOutOfRangeException,*/ IndexOutOfRangeException)
             {
                 //increase capacity
                 IncreaseCapacity();
@@ -103,26 +119,19 @@ namespace Sandbox
                 }
                 else
                 {
-                    //UpdateList();
                     items = tempItems;
+                    count++;
+
                 }
             }
         }
 
-        private void UpdateList()
-        {
-            //int newListLength = items.Length;
-            //for (int i = 0; i<items.Length; i++)
-            //{
-            //    if ()
-            //}
-
-        }
 
         public void Add(T itemToAdd)
         {
             //If an index is not specified, add it to the end of the array.
-            Add(itemToAdd, items.Length);
+            //Add(itemToAdd, items.Length);
+            Add(itemToAdd, count);
         }
 
         private int GetCapacity()
@@ -132,7 +141,7 @@ namespace Sandbox
 
         private int GetItemCount()
         {
-            return (items.Length);
+            return count;
         }
 
     }
