@@ -87,6 +87,7 @@ namespace Sandbox
                 {
                     tempItems.Append<T>(itemToAdd);
                 }
+                tempItems[index] = itemToAdd;
                 success = true;
             }
             catch (ArgumentOutOfRangeException)

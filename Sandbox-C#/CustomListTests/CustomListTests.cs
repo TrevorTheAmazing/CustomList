@@ -101,7 +101,7 @@ namespace CustomListTests
         {
             //arrange
             CustomList<int> testCustomList = new CustomList<int>();
-            int expected = 6;
+            int expected = 7;
             int actual;
 
             //act
