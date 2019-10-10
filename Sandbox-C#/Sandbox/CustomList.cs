@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sandbox
 {
-    public class CustomList<T> //: IEnumerable<T>
+    public class CustomList<T> : IEnumerable
     {
 
         //memb var
@@ -210,16 +211,26 @@ namespace Sandbox
             return List1;
         }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
 
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return (IEnumerator)GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            //throw new NotImplementedException();
+            return this.GetEnumerator();
+        }
+
+        //    public IEnumerable.GetEnumerator()
+        //    {
+        //        return GetEnumerator();
         //}
 
-        //public ItemsEnum GetEnumerator()
-        //{
-        //    return new ItemsEnum(items);
-        //}
+
+
+
+
     }
     
 }

@@ -209,17 +209,17 @@ namespace CustomListTests
         [TestMethod]
         public void Zipper_Test()
         {
-            CustomList<int> testCustomListOdd = new CustomList<int>();
-            CustomList<int> testCustomListEven = new CustomList<int>();
+            CustomList<int> testCustomListOdd = new CustomList<int>() {1,3,5};
+            CustomList<int> testCustomListEven = new CustomList<int>() {2,4,6};
             CustomList<int> testCustomListZippered = new CustomList<int>();
 
-            testCustomListOdd.Add(1);
-            testCustomListOdd.Add(3);
-            testCustomListOdd.Add(5);
+            //testCustomListOdd.Add(1);
+            //testCustomListOdd.Add(3);
+            //testCustomListOdd.Add(5);
 
-            testCustomListEven.Add(2);
-            testCustomListEven.Add(4);
-            testCustomListEven.Add(6);
+            //testCustomListEven.Add(2);
+            //testCustomListEven.Add(4);
+            //testCustomListEven.Add(6);
 
 
 

@@ -22,7 +22,7 @@ https://msdn.microsoft.com/en-us/library/cd666k3e%28v=vs.110%29.aspx?f=255&MSPPE
 
 
 
-(10 points): As a developer, I want the custom list class to be iterable.
+
 
 
 
@@ -35,6 +35,7 @@ DONE - (10 points): As a developer, I want to use a custom-built list class that
 DONE - (10 points): As a developer, I want to use C# best practices, SOLID design principles, and good naming conventions on the project. 
 DONE - (10 points): As a developer, I want the ability to remove an object from an instance of my custom-built list class by imitating the C# Remove() method.
 DONE - (10 points): As a developer, I want to be able to override the ToString method that converts the contents of the custom list to a string.
+DONE - (10 points): As a developer, I want the custom list class to be iterable.
 DONE - (10 points): As a developer, I want to create a C# indexer so that I can make the objects in my list accessible via index.  
 I want to properly ensure that a user cannot access an out-of-bounds index?
 DONE - (10 points): As a developer, I want to be able to overload the + operator, so that I can add two instances of the custom list class together.
