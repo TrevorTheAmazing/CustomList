@@ -5,7 +5,7 @@ using Sandbox;
 namespace CustomListTests
 {
     [TestClass]
-    public class CustomListTestsInteger
+    public class CustomListTestsAdd
     {
         // unit test for adding multiple items to check position of last item
         // unit test for adding multiple items to check Count property
@@ -74,7 +74,6 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
 
-        //Test adding 10 items check count
         [TestMethod]
         public void Add_AddMultipleItems_CheckCount()
         {
@@ -95,7 +94,6 @@ namespace CustomListTests
             Assert.AreEqual(expected, actual);
         }
 
-        //Test adding 10 items check index value of 7
         [TestMethod]
         public void Add_AddMultipleItems_CheckSpecificIndex()
         {
@@ -119,44 +117,6 @@ namespace CustomListTests
         }
 
         [TestMethod]
-        public void Int_ToStringOverride_Test()
-        {
-            string expected = "777";
-            CustomList<int> testCustomList = new CustomList<int>();
-            for (int i = 0; i < 3; i++)
-            {
-                testCustomList.Add(7);
-            }
-
-            string testResult = testCustomList.ToString();
-
-            Assert.AreEqual(expected, testResult);
-        }
-
-        [TestMethod]
-        public void Delete_Test()
-        {
-            CustomList<int> testCustomList = new CustomList<int>();
-
-            for (int i = 0; i < 6; i++)
-            {
-                testCustomList.Add(i);
-            }
-
-            int preTestCount = testCustomList.Count;
-
-            testCustomList.Delete(3);
-
-            int postTestCount = testCustomList.Count;
-
-            Assert.IsTrue(preTestCount > postTestCount);
-        }
-    }
-
-    [TestClass]
-    public class CustomListTestsString
-    {
-        [TestMethod]
         public void String_Add_Method_Test()
         {
             //arrange
@@ -171,6 +131,7 @@ namespace CustomListTests
             Assert.IsTrue(tempString == testCustomList[0]);
         }
         [TestMethod]
+
         public void String_AddMultiple_Method_Test()
         {
             //arrange
@@ -187,6 +148,143 @@ namespace CustomListTests
             Assert.IsTrue(tempString2 == testCustomList[1]);
         }
 
+
+
+    }
+
+    [TestClass]
+    public class CustomListTestsRemove
+    {
+        [TestMethod]
+        public void Delete_CheckCount_Test()
+        {
+            CustomList<int> testCustomList = new CustomList<int>();
+            for (int i = 0; i < 6; i++)
+            {
+                testCustomList.Add(i);
+            }
+            int preTestCount = testCustomList.Count;
+            testCustomList.Delete(3);
+            int postTestCount = testCustomList.Count;
+            Assert.IsTrue(preTestCount > postTestCount);
+        }
+
+        [TestMethod]
+        public void Delete_CapacityRemains_Test()
+        {
+            //delete, capacity does not change
+        }
+
+        [TestMethod]
+        public void Delete_IndexFilledByNext_Test()
+        {
+            //delete, index filled in
+        }
+
+        [TestMethod]
+        public void Delete_ValueRemoved_Test()
+        {
+            //delete, value removed
+        }
+
+    }
+
+    [TestClass]
+    public class CustomListTestsZipper
+    {
+        [TestMethod]
+        public void Zipper_FirstIndicesMatch_Test()
+        {
+            CustomList<int> testCustomListOdd = new CustomList<int>() {1,3,5};
+            CustomList<int> testCustomListEven = new CustomList<int>() {2,4,6};
+            CustomList<int> testCustomListZippered = new CustomList<int>();
+
+            for (int i = 0; i<testCustomListOdd.Count; i++)
+            {
+                testCustomListZippered.Add(testCustomListOdd[i]);
+                testCustomListZippered.Add(testCustomListEven[i]);
+            }
+
+            Assert.AreEqual(testCustomListOdd[0], testCustomListZippered[0]);
+
+        }
+
+        public void Zipper_LastIndicesMatch_Test()
+        {
+            CustomList<int> testCustomListOdd = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCustomListEven = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> testCustomListZippered = new CustomList<int>();
+
+            for (int i = 0; i < testCustomListOdd.Count; i++)
+            {
+                testCustomListZippered.Add(testCustomListOdd[i]);
+                testCustomListZippered.Add(testCustomListEven[i]);
+            }
+
+            Assert.AreEqual(testCustomListEven[2], testCustomListZippered[5]);
+        }
+
+        [TestMethod]
+        public void Zipper_ListsDifferentLength_Test()
+        {
+            CustomList<int> testCustomListOdd = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCustomListEven = new CustomList<int>() { 2, 4, 6, 8 };
+            CustomList<int> testCustomListZipperedExpected = new CustomList<int>() {1,2,3,4,5,6,8};
+            CustomList<int> testCustomListZipperedActual = new CustomList<int>();
+
+            for (int i = 0; i < testCustomListOdd.Count; i++)
+            {
+                testCustomListZipperedExpected.Add(testCustomListOdd[i]);
+                testCustomListZipperedActual.Add(testCustomListEven[i]);
+            }
+
+            Assert.AreEqual(testCustomListZipperedExpected, testCustomListZipperedActual);
+        }
+
+        [TestMethod]
+        public void Zipper_4_Test()
+        {
+           
+        }
+
+        public void Zipper_5_Test()
+        {
+
+        }
+    }
+
+    [TestClass]
+    public class CustomListTestPlusOperatorOverload
+    {
+        //add two, same type
+
+        //add two, diff type
+    }
+
+    [TestClass]
+    public class CustomListTestMinusOperatorOverload
+    {
+        //add two, same type
+
+        //add two, diff type
+    }
+
+    [TestClass]
+    public class CustomListTestToStringOverload
+    {
+        [TestMethod]
+        public void Int_ToStringOverride_Test()
+        {
+            string expected = "777";
+            CustomList<int> testCustomList = new CustomList<int>();
+            for (int i = 0; i < 3; i++)
+            {
+                testCustomList.Add(7);
+            }
+            string testResult = testCustomList.ToString();
+            Assert.AreEqual(expected, testResult);
+        }
+
         [TestMethod]
         public void String_ToStringOverride_Test()
         {
@@ -196,44 +294,9 @@ namespace CustomListTests
             {
                 testCustomList.Add("x");
             }
-
             string testResult = testCustomList.ToString();
-
             Assert.AreEqual(expected, testResult);
         }
     }
 
-    [TestClass]
-    public class CustomListTestsZipper
-    {
-        [TestMethod]
-        public void Zipper_Test()
-        {
-            CustomList<int> testCustomListOdd = new CustomList<int>() {1,3,5};
-            CustomList<int> testCustomListEven = new CustomList<int>() {2,4,6};
-            CustomList<int> testCustomListZippered = new CustomList<int>();
-
-            //testCustomListOdd.Add(1);
-            //testCustomListOdd.Add(3);
-            //testCustomListOdd.Add(5);
-
-            //testCustomListEven.Add(2);
-            //testCustomListEven.Add(4);
-            //testCustomListEven.Add(6);
-
-
-
-            for (int i = 0; i<testCustomListOdd.Count; i++)
-            {
-                testCustomListZippered.Add(testCustomListOdd[i]);
-                testCustomListZippered.Add(testCustomListEven[i]);
-            }
-
-            Assert.AreEqual(testCustomListOdd[0], testCustomListZippered[0]);
-            Assert.AreEqual(testCustomListEven[2], testCustomListZippered[5]);
-
-        }
-    }
-
-   
 }

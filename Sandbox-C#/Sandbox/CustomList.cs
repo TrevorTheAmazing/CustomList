@@ -170,14 +170,16 @@ namespace Sandbox
             string tempResult = "";
             for (int i = 0; i < count; i++)
             {
-                tempResult += items[i];
+                tempResult += items[i].ToString();
             }
             //return base.ToString();
             return tempResult;
         }
 
+
         public static CustomList<T> operator +(CustomList<T> List1, CustomList<T> List2)
         {
+            //FIND A WAY TO ENSURE THAT LIST2.LENGTH >= LIST1.LENGTH
             CustomList<T> tempCustomList = new CustomList<T>();
             for (int i = 0; i < List1.Count; i++)
             {
@@ -194,6 +196,7 @@ namespace Sandbox
 
         public static CustomList<T> operator -(CustomList<T> List1, CustomList<T> List2)
         {
+            //FIND A WAY TO ENSURE THAT LIST2.LENGTH >= LIST1.LENGTH
             CustomList<T> tempCustomList = new CustomList<T>();
             for (int i = 0; i < List2.Count; i++)
             {
@@ -218,19 +221,7 @@ namespace Sandbox
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            //throw new NotImplementedException();
             return this.GetEnumerator();
-        }
-
-        //    public IEnumerable.GetEnumerator()
-        //    {
-        //        return GetEnumerator();
-        //}
-
-
-
-
-
-    }
-    
+        } 
+    }    
 }
