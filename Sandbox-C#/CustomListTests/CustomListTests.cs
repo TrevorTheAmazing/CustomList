@@ -119,6 +119,21 @@ namespace CustomListTests
         }
 
         [TestMethod]
+        public void Int_ToStringOverride_Test()
+        {
+            string expected = "777";
+            CustomList<int> testCustomList = new CustomList<int>();
+            for (int i = 0; i < 3; i++)
+            {
+                testCustomList.Add(7);
+            }
+
+            string testResult = testCustomList.ToString();
+
+            Assert.AreEqual(expected, testResult);
+        }
+
+        [TestMethod]
         public void Delete_Test()
         {
             CustomList<int> testCustomList = new CustomList<int>();
@@ -171,6 +186,21 @@ namespace CustomListTests
             //assert
             Assert.IsTrue(tempString2 == testCustomList[1]);
         }
+
+        [TestMethod]
+        public void String_ToStringOverride_Test()
+        {
+            string expected = "xxx";
+            CustomList<string> testCustomList = new CustomList<string>();
+            for (int i = 0; i < 3; i++)
+            {
+                testCustomList.Add("x");
+            }
+
+            string testResult = testCustomList.ToString();
+
+            Assert.AreEqual(expected, testResult);
+        }
     }
 
     [TestClass]
@@ -204,5 +234,6 @@ namespace CustomListTests
 
         }
     }
-}
 
+   
+}

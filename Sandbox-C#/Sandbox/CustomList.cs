@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sandbox
 {
-    public class CustomList<T>
+    public class CustomList<T> //: IEnumerable<T>
     {
+
         //memb var
         private T[] items;
         private T[] tempItems;
@@ -28,7 +29,7 @@ namespace Sandbox
         }       
 
         //constructor
-        public CustomList()
+        public CustomList() 
         {
             capacity = 0;
             items = new T[capacity];
@@ -106,7 +107,8 @@ namespace Sandbox
             }
         }
 
-        public void Add(T itemToAdd)
+
+        public void Add(T itemToAdd)    
         {
             //If an index is not specified, add it to the end of the array.
             //Add(itemToAdd, items.Length);
@@ -161,5 +163,63 @@ namespace Sandbox
                 count--;
             }
         }
+
+        public override string ToString()
+        {
+            string tempResult = "";
+            for (int i = 0; i < count; i++)
+            {
+                tempResult += items[i];
+            }
+            //return base.ToString();
+            return tempResult;
+        }
+
+        public static CustomList<T> operator +(CustomList<T> List1, CustomList<T> List2)
+        {
+            CustomList<T> tempCustomList = new CustomList<T>();
+            for (int i = 0; i < List1.Count; i++)
+            {
+                tempCustomList.Add(List1[i]);
+            }
+
+            for (int i = 0; i < List2.Count; i++)
+            {
+                tempCustomList.Add(List2[i]);
+            }
+
+            return tempCustomList;
+        }
+
+        public static CustomList<T> operator -(CustomList<T> List1, CustomList<T> List2)
+        {
+            CustomList<T> tempCustomList = new CustomList<T>();
+            for (int i = 0; i < List2.Count; i++)
+            {
+                for (int j = 0; j<List1.Count; j++)
+                {
+                    if (List2[j].Equals(List1[i]))
+                    {
+                        List1.Delete(List1[i]);
+                    }
+                }
+            }
+
+
+
+            return List1;
+        }
+
+
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return (IEnumerator)GetEnumerator();
+        //}
+
+        //public ItemsEnum GetEnumerator()
+        //{
+        //    return new ItemsEnum(items);
+        //}
     }
+    
 }
