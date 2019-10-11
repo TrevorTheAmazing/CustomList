@@ -15,7 +15,8 @@ namespace Sandbox
         private T[] tempItems;
         public T this[int i]
         {
-            get { return items[i]; }
+            //get { return items[i]; }
+            get { return GetListIndex(i); }
             set { items[i] = value; }
         }
         private int capacity;
@@ -32,22 +33,16 @@ namespace Sandbox
         //constructor
         public CustomList() 
         {
-            capacity = 0;
+            //capacity = 0;
+            capacity = 1;
             items = new T[capacity];
         }
 
         //memb meth
         private void IncreaseCapacity()
         {
-            if (capacity == 0)
-            {
-                tempItems = new T[1];
-            }
-            else
-            {
-                tempItems = new T[capacity * 2];
-            }
-                        
+            tempItems = new T[capacity * 2];
+
             for (int i = 0; i<items.Length; i++)
             {
                 tempItems[i] = items[i];
@@ -55,59 +50,18 @@ namespace Sandbox
 
             items = tempItems;
             capacity = items.Length;
-
         }
 
         public void Add(T itemToAdd, int index)
         {
-            bool success = false;
-
             if ((index + 1) >= capacity)
             {
                 IncreaseCapacity();
             }
 
-            tempItems = new T[capacity];
-
-            for (int i = 0; i<items.Length; i++)
-            {
-                tempItems[i] = items[i];
-            }
-
-            try
-            {
-                if (index == 0)
-                {
-                    tempItems.Prepend<T>(itemToAdd);
-                }
-                else
-                {
-                    tempItems.Append<T>(itemToAdd);
-                }
-                tempItems[index] = itemToAdd;
-                this[index] = tempItems[index];
-                success = true;
-            }
-            catch (/*ArgumentOutOfRangeException,*/ IndexOutOfRangeException)
-            {
-                //increase capacity
-                IncreaseCapacity();
-            }
-            finally
-            {
-                if (!success)
-                {
-                    Add(itemToAdd, index);
-                }
-                else
-                {
-                    items = tempItems;
-                    count++;
-
-                }
-            }
+            items[index] = itemToAdd;
+            count++;
         }
-
 
         public void Add(T itemToAdd)    
         {
@@ -126,9 +80,8 @@ namespace Sandbox
             return count;
         }
 
-        //public void Delete(T itemToDelete)
         public void Delete(T value)
-        {//imitate Remove()
+        {
             int tempIndex = -1;
             tempItems = items;
 
@@ -148,13 +101,10 @@ namespace Sandbox
                 {
                     if (i == tempIndex)
                     {
-                        //count--;
-                        //continue;
                         for (int j = tempIndex; j < count; j++)
                         {
                             items[j] = tempItems[j + 1];
-                        }
-                        
+                        }   
                     }
                     else
                     {
@@ -176,10 +126,29 @@ namespace Sandbox
             return tempResult;
         }
 
+        public CustomList<T> Zip(CustomList<T> List1, CustomList<T> List2)
+        {
+            CustomList<T> zippedCustomList = new CustomList<T>();
+
+            for (int i=0; i<List1.Count; i++)
+            {
+                try
+                {
+                    zippedCustomList.Add(List1[i]);
+                    zippedCustomList.Add(List2[i]);
+                }
+                catch(ArgumentOutOfRangeException)
+                {
+                    break;
+                }
+            }
+
+            return zippedCustomList;            
+        }
 
         public static CustomList<T> operator +(CustomList<T> List1, CustomList<T> List2)
         {
-            //FIND A WAY TO ENSURE THAT LIST2.LENGTH >= LIST1.LENGTH
+            //FIND A WAY TO ENSURE THAT LIST2.LENGTH >= LIST1.LENGTH, or TRY/CATCH INSTEAD
             CustomList<T> tempCustomList = new CustomList<T>();
             for (int i = 0; i < List1.Count; i++)
             {
@@ -212,6 +181,21 @@ namespace Sandbox
 
 
             return List1;
+        }
+
+        public T GetListIndex(int i)
+        {
+            int tempNdx = i;
+            
+            if ((i >= 0) && (i < this.count))
+            {
+                return items[tempNdx];
+            }
+            else
+            {
+                tempNdx = (this.count - 1);
+                throw new ArgumentOutOfRangeException();
+            }
         }
 
         public IEnumerator<T> GetEnumerator()
