@@ -7,10 +7,6 @@ namespace CustomListTests
     [TestClass]
     public class CustomListTestsAdd
     {
-        // unit test for adding multiple items to check position of last item
-        // unit test for adding multiple items to check Count property
-        // unit test for adding number of items beyond 'Capacity' but it still adds
-
         [TestMethod]
         public void Add_Method_Test()
         {
@@ -147,9 +143,6 @@ namespace CustomListTests
             //assert
             Assert.IsTrue(tempString2 == testCustomList[1]);
         }
-
-
-
     }
 
     [TestClass]
@@ -172,20 +165,52 @@ namespace CustomListTests
         [TestMethod]
         public void Delete_CapacityRemains_Test()
         {
-            //delete, capacity does not change
-        }
-
-        [TestMethod]
-        public void Delete_IndexFilledByNext_Test()
-        {
-            //delete, index filled in
+            CustomList<int> testCustomList = new CustomList<int>();
+            for (int i = 0; i < 8; i++)
+            {
+                testCustomList.Add(i);
+            }
+            int preTestCapacity = testCustomList.Capacity;
+            testCustomList.Delete(0);
+            int postTestCapacity = testCustomList.Capacity;
+            Assert.AreEqual(preTestCapacity, postTestCapacity);
         }
 
         [TestMethod]
         public void Delete_ValueRemoved_Test()
         {
             //delete, value removed
+            CustomList<int> testCustomList = new CustomList<int>();
+            testCustomList.Add(7);
+            testCustomList.Add(7);
+            testCustomList.Add(7);
+            testCustomList.Add(7);
+            testCustomList.Add(0);
+            testCustomList.Add(7);
+
+            testCustomList.Delete(0);
+
+            for (int i = 0; i < testCustomList.Count; i++)
+            {
+                Assert.IsFalse(testCustomList[i].Equals(0));
+            }            
         }
+
+        [TestMethod]
+        public void Delete_IndexFilledByNext_Test()
+        {
+            //delete, index filled in
+            CustomList<int> testCustomList = new CustomList<int>();
+            for (int i = 0; i < 8; i++)
+            {
+                testCustomList.Add(i);
+            }
+            int preDeleteValue = testCustomList[3];
+            int expected = 4;
+            testCustomList.Delete(3);
+            
+            Assert.AreEqual(expected, testCustomList[3]);
+        }        
 
     }
 
@@ -232,9 +257,10 @@ namespace CustomListTests
             CustomList<int> testCustomListZipperedExpected = new CustomList<int>() {1,2,3,4,5,6,8};
             CustomList<int> testCustomListZipperedActual = new CustomList<int>();
 
-            for (int i = 0; i < testCustomListOdd.Count; i++)
+            //for (int i = 0; i < testCustomListOdd.Count; i++)
+            for (int i = 0; i < testCustomListEven.Count; i++)
             {
-                testCustomListZipperedExpected.Add(testCustomListOdd[i]);
+                testCustomListZipperedActual.Add(testCustomListOdd[i]);
                 testCustomListZipperedActual.Add(testCustomListEven[i]);
             }
 
