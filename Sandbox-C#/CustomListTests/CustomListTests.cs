@@ -117,7 +117,7 @@ namespace CustomListTests
         {
             //arrange
             CustomList<string> testCustomList = new CustomList<string>();
-            int tempCount = testCustomList.Count;
+            //int tempCount = testCustomList.Count;
             string tempString = "zero";
 
             //act
@@ -132,7 +132,7 @@ namespace CustomListTests
         {
             //arrange
             CustomList<string> testCustomList = new CustomList<string>();
-            int tempCount = testCustomList.Count;
+            //int tempCount = testCustomList.Count;
             string tempString1 = "one";
             string tempString2 = "two";
 
@@ -224,11 +224,7 @@ namespace CustomListTests
             CustomList<int> testCustomListEven = new CustomList<int>() {2,4,6};
             CustomList<int> testCustomListZippered = new CustomList<int>();
 
-            for (int i = 0; i<testCustomListOdd.Count; i++)
-            {
-                testCustomListZippered.Add(testCustomListOdd[i]);
-                testCustomListZippered.Add(testCustomListEven[i]);
-            }
+            testCustomListZippered = testCustomListZippered.Zip(testCustomListOdd, testCustomListEven);
 
             Assert.AreEqual(testCustomListOdd[0], testCustomListZippered[0]);
 
@@ -259,11 +255,10 @@ namespace CustomListTests
             string tempExpected = testCustomListZipperedExpected.ToString();
             string tempActual = testCustomListZipperedActual.ToString();
             Assert.AreEqual(tempExpected, tempActual);
-
         }
 
         [TestMethod]
-        public void Zipper_ListsDifferentLength_Test()
+        public void Zipper_ListLengthsDiffer_Test()
         {
             CustomList<int> testCustomListOdd = new CustomList<int>() { 1, 3, 5 };
             CustomList<int> testCustomListEven = new CustomList<int>() { 2, 4, 6, 8 };
@@ -277,9 +272,16 @@ namespace CustomListTests
             Assert.AreEqual(tempExpected, tempActual);
         }
 
-        public void Zipper_5_Test()
+        [TestMethod]
+        public void Zipper_ZipperedListLengthGreaterThanParamListLengths_Test()
         {
-            //test    
+            CustomList<int> testCustomListOdd = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> testCustomListEven = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> testCustomListZipperedActual = new CustomList<int>();
+
+            testCustomListZipperedActual = testCustomListZipperedActual.Zip(testCustomListOdd, testCustomListEven);
+    
+            Assert.IsTrue((testCustomListZipperedActual.Count > testCustomListOdd.Count) && (testCustomListZipperedActual.Count > testCustomListEven.Count));
         }
     }
 
@@ -289,7 +291,6 @@ namespace CustomListTests
         [TestMethod]
         public void PlusOperator_SameType_Test()
         {
-            //add two, same type
             CustomList<int> one = new CustomList<int>() { 1, 3, 5 };
             CustomList<int> two = new CustomList<int>() { 2, 4, 6 };
             CustomList<int> expected = new CustomList<int>() { 1, 3, 5, 2, 4, 6 };
@@ -302,9 +303,13 @@ namespace CustomListTests
         }
 
         [TestMethod]
-        public void PlusOperator_2_Test()
+        public void PlusOperator_ListCountIncreases_Test()
         {
-            //test 2/2
+            CustomList<int> one = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> two = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> results = one + two;
+
+            Assert.IsTrue((results.Count > one.Count) && (results.Count > two.Count));
         }
 
     }
@@ -318,24 +323,24 @@ namespace CustomListTests
             //'subtract' two, same type
             CustomList<int> one = new CustomList<int>() { 1, 3, 5 };
             CustomList<int> two = new CustomList<int>() { 2, 1, 6 };
-            CustomList<int> expected = new CustomList<int>() { 1, 3, 5, 2, 4, 6 };
+            CustomList<int> actual = one - two;
 
-            CList<int> expected = one - two;
-            //result has 3,5
-
+            CustomList<int> expected = new CustomList<int>() {3,5};
 
             string expectedResults = expected.ToString();
             string actualResults = actual.ToString();
 
             Assert.AreEqual(expectedResults, actualResults);
-
-
         }
 
         [TestMethod]
-        public void MinusOperator_DifferentType_Test()
+        public void MinusOperator_CheckCount_Test()
         {
-            //add two, diff type
+            CustomList<int> one = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> two = new CustomList<int>() { 2, 1, 6 };
+            CustomList<int> actual = one - two;
+
+            Assert.IsTrue((actual.Count == one.Count) && (actual.Count < two.Count));
         }
 
     }

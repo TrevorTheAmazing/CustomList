@@ -1,0 +1,30 @@
+SYNTAX: 
+CustomList<T> = CustomList<T> - CustomList<T>;
+
+METHOD SIGNATURE: 
+public static CustomList<T> operator -(CustomList<T> List1, CustomList<T> List2) {}
+
+PARAMETERS: CustomList<T>
+Use of this overlaoded operator requires two arguments, both of which are Customlists<T> of the same type.
+
+RETURN TYPE: CustomList<T>
+This overloaded method returns one CustomList<T>.
+
+USAGE:
+resultCustomList = CustomList1 - CustomList2;
+
+NOTES:
+This overloaded method will "subtract" one list from another.  The parameters and return type are all CustomList objects.  The result returned from this method is essentially parameter List1 with elements removed if those values are found in parameter List2.
+
+EXAMPLE:
+
+        static void Main(string[] args)
+        {
+            //'subtract' one CustomList from another of the same type
+            CustomList<int> one = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> two = new CustomList<int>() { 2, 1, 6 };
+            CustomList<int> results = one - two;
+
+            //results Results:
+            //{3,5}
+        }
