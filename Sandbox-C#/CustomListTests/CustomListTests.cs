@@ -35,7 +35,6 @@ namespace CustomListTests
 
             //assert
             Assert.IsTrue(postTestCapacity > preTestCapacity);
-
         }
 
         [TestMethod]
@@ -108,8 +107,6 @@ namespace CustomListTests
 
             //assert
             Assert.AreEqual(expected, actual);
-
-
         }
 
         [TestMethod]
@@ -126,8 +123,8 @@ namespace CustomListTests
             //assert
             Assert.IsTrue(tempString == testCustomList[0]);
         }
+        
         [TestMethod]
-
         public void String_AddMultiple_Method_Test()
         {
             //arrange
@@ -210,8 +207,24 @@ namespace CustomListTests
             testCustomList.Delete(3);
             
             Assert.AreEqual(expected, testCustomList[3]);
-        }        
+        }
 
+        [TestMethod]
+        public void Delete_StringValueRemoved_Test()
+        {
+            //delete, value removed
+            CustomList<string> testCustomList = new CustomList<string>();
+            testCustomList.Add("zero");
+            testCustomList.Add("one");
+            testCustomList.Add("two");            
+
+            testCustomList.Delete("one");
+
+            for (int i = 0; i < testCustomList.Count; i++)
+            {
+                Assert.IsFalse(testCustomList[i].Equals("one"));
+            }
+        }
     }
 
     [TestClass]
@@ -312,13 +325,50 @@ namespace CustomListTests
             Assert.IsTrue((results.Count > one.Count) && (results.Count > two.Count));
         }
 
+        [TestMethod]
+        public void PlusOperator_StringType_Test()
+        {
+            CustomList<string> one = new CustomList<string>() { "1", "3", "5" };
+            CustomList<string> two = new CustomList<string>() { "2", "4", "6" };
+            CustomList<string> expected = new CustomList<string>() { "1", "3", "5", "2", "4", "6"};
+            CustomList<string> actual = one + two;
+
+            string expectedResults = expected.ToString();
+            string actualResults = actual.ToString();
+
+            Assert.AreEqual(expectedResults, actualResults);
+        }
+
+        [TestMethod]
+        public void PlusOperator_StringTypeListCountIncreases_Test()
+        {
+            CustomList<string> one = new CustomList<string>() { "1", "3", "5" };
+            CustomList<string> two = new CustomList<string>() { "2", "4", "6" };
+            CustomList<string> results = one + two;
+
+            Assert.IsTrue((results.Count > one.Count) && (results.Count > two.Count));
+        }
+
+        [TestMethod]
+        public void PlusOperator_DoubleType_Test()
+        {
+            CustomList<double> one = new CustomList<double>() { 1.1, 3.1, 5.1 };
+            CustomList<double> two = new CustomList<double>() { 2.1, 4.1, 6.1 };
+            CustomList<double> expected = new CustomList<double>() { 1.1, 3.1, 5.1, 2.1, 4.1, 6.1};
+            CustomList<double> actual = one + two;
+
+            string expectedResults = expected.ToString();
+            string actualResults = actual.ToString();
+
+            Assert.AreEqual(expectedResults, actualResults);
+        }
     }
 
     [TestClass]
     public class CustomListTestMinusOperatorOverload
     {
         [TestMethod]
-        public void MinusOperator_SameType_Test()
+        public void MinusOperator_IntegerType_Test()
         {
             //'subtract' two, same type
             CustomList<int> one = new CustomList<int>() { 1, 3, 5 };
@@ -343,10 +393,44 @@ namespace CustomListTests
             Assert.IsTrue((actual.Count == one.Count) && (actual.Count < two.Count));
         }
 
+        [TestMethod]
+        public void MinusOperator_StringType_Test()
+        {
+            CustomList<string> one = new CustomList<string>() { "1", "3", "5" };
+            CustomList<string> two = new CustomList<string>() { "2", "1", "6" };
+            CustomList<string> actual = one - two;
+
+            CustomList<string> expected = new CustomList<string>() { "3", "5" };
+
+            string expectedResults = expected.ToString();
+            string actualResults = actual.ToString();
+
+            Assert.AreEqual(expectedResults, actualResults);
+        }
+
+        [TestMethod]
+        public void MinusOperator_StringTypeCheckCount_Test()
+        {
+            CustomList<string> one = new CustomList<string>() { "1", "3", "5" };
+            CustomList<string> two = new CustomList<string>() { "2", "1", "6" };
+            CustomList<string> actual = one - two;
+
+            Assert.IsTrue((actual.Count == one.Count) && (actual.Count < two.Count));
+        }
+
+        [TestMethod]
+        public void MinusOperator_DoubleType_Test()
+        {
+            CustomList<double> one = new CustomList<double>() { 1.1, 3.1, 5.1 };
+            CustomList<double> two = new CustomList<double>() { 2.1, 1.1, 6.1 };
+            CustomList<double> actual = one - two;
+
+            Assert.IsTrue((actual.Count == one.Count) && (actual.Count < two.Count));
+        }
     }
 
     [TestClass]
-    public class CustomListTestToStringOverload
+    public class CustomListTestToStringOverride
     {
         [TestMethod]
         public void Int_ToStringOverride_Test()

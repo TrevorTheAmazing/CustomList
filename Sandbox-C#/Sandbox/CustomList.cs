@@ -142,13 +142,11 @@ namespace Sandbox
                     break;
                 }
             }
-
             return zippedCustomList;            
         }
 
         public static CustomList<T> operator +(CustomList<T> List1, CustomList<T> List2)
         {
-            //FIND A WAY TO ENSURE THAT LIST2.LENGTH >= LIST1.LENGTH, or TRY/CATCH INSTEAD
             CustomList<T> tempCustomList = new CustomList<T>();
             for (int i = 0; i < List1.Count; i++)
             {
@@ -165,19 +163,7 @@ namespace Sandbox
 
         public static CustomList<T> operator -(CustomList<T> List1, CustomList<T> List2)
         {
-            //FIND A WAY TO ENSURE THAT LIST2.LENGTH >= LIST1.LENGTH
             CustomList<T> tempCustomList = new CustomList<T>();
-
-            //for (int i = 0; i < List2.Count; i++)
-            //{
-            //    for (int j = 0; j < List1.Count; j++)
-            //    {
-            //        if (List2[j].Equals(List1[i]))
-            //        {
-            //            List1.Delete(List1[i]);
-            //        }
-            //    }
-            //}
 
             for (int i = 0; i < List1.Count; i++)
             {
@@ -189,8 +175,6 @@ namespace Sandbox
                     }
                 }
             }
-
-
             return List1;
         }
 
